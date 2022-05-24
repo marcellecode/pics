@@ -5,13 +5,13 @@ por que será utilizado state
 */
 
 class SearchBar extends React.Component {
-  onInputChange(event) {
-    console.log(event.target.value);
-  }
+// uncontrolled element    
+//   onInputChange(event) {
+//     console.log(event.target.value);
+//   }
 
-  onInputClick() {
-      console.log('Input was clicked')
-  }
+//controlled element
+  state = {term: ''};
 
   render() {
     return (
@@ -21,7 +21,12 @@ class SearchBar extends React.Component {
             <label>Image Search</label>
             {/* Não colocamos parenteses onde quer
              que passamos uma função de callback */}
-            <input type="text" onClick={this.onInputClick} onChange={this.onInputChange} />
+            {/* <input type="text" onChange={this.onInputChange} /> */}
+            <input
+              type="text"
+              value={this.state.term}
+              onChange={(e) => this.setState({ term: e.target.value })}
+            />
           </div>
         </form>
       </div>
